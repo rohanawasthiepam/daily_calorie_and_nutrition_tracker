@@ -33,6 +33,8 @@ baseline after the five clarification decisions were incorporated.
 ## Review Outcome
 
 - Every clarification answer is reflected in the spec.
+- Lower-impact unanswered details are listed as assumptions in the clarification
+  log rather than being presented as mentor-approved answers.
 - No contradictory behavior or unresolved business decision remains for the
   agreed scope.
 - The spec quality checklist is 16/16 checked.
