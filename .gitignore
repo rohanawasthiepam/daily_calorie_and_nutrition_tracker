@@ -1,0 +1,16 @@
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+.env
+.env.*
+__pycache__/
+*.py[cod]
+node_modules/
+dist/
+build/
+.idea/
+.vscode/
+# Skill runtime installed in this workspace; not assignment source.
+.github/skills/
