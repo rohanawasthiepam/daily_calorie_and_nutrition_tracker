@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Track daily calories, protein, and nutrition goals.">
+    <title>Daily nutrition tracker</title>
+    <link rel="stylesheet" href="./src/styles.css">
+    <script type="module" src="./src/app.js"></script>
+  </head>
+  <body>
+    <header class="page-header">
+      <p class="eyebrow">Personal food log</p>
+      <h1>Daily nutrition</h1>
+      <p>Keep track of your meals and how they compare with your goals.</p>
+    </header>
+
+    <main>
+      <section class="day-picker panel" aria-labelledby="day-heading">
+        <div>
+          <h2 id="day-heading">Your day</h2>
+          <p>Choose today or a previous day to review your progress.</p>
+        </div>
+        <label for="selected-date">Date</label>
+        <input id="selected-date" name="date" type="date">
+      </section>
+
+      <p id="app-message" class="message" role="status" aria-live="polite"></p>
+      <p id="app-error" class="message message-error" role="alert" hidden></p>
+
+      <section class="panel" aria-labelledby="progress-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Daily summary</p>
+            <h2 id="progress-heading">Progress</h2>
+          </div>
+        </div>
+        <div class="progress-grid">
+          <article class="progress-card">
+            <h3>Calories</h3>
+            <p class="progress-value"><output id="calorie-total">0</output> <span>kcal</span></p>
+            <p id="calorie-comparison" class="comparison">Set a target for this day.</p>
+          </article>
+          <article class="progress-card">
+            <h3>Protein</h3>
+            <p class="progress-value"><output id="protein-total">0</output> <span>g</span></p>
+            <p id="protein-comparison" class="comparison">Set a target for this day.</p>
+          </article>
+        </div>
+      </section>
+
+      <div class="content-grid">
+        <section class="panel" aria-labelledby="meal-heading">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Food log</p>
+              <h2 id="meal-heading">Meals and food</h2>
+            </div>
+          </div>
+          <form id="meal-form" novalidate>
+            <label for="meal-name">Food or meal name</label>
+            <input id="meal-name" name="name" type="text" autocomplete="off" required>
+
+            <div class="form-row">
+              <div>
+                <label for="meal-calories">Calories</label>
+                <input id="meal-calories" name="calories" type="number" min="0" step="1" inputmode="numeric" required>
+              </div>
+              <div>
+                <label for="meal-protein">Protein (g)</label>
+                <input id="meal-protein" name="proteinGrams" type="number" min="0" step="0.1" inputmode="decimal" required>
+              </div>
+            </div>
+            <p class="field-hint">Enter the total nutrition for this food or meal.</p>
+            <div class="button-row">
+              <button id="meal-submit" type="submit">Add food</button>
+              <button id="meal-cancel" class="button-secondary" type="button" hidden>Cancel edit</button>
+            </div>
+          </form>
+
+          <div class="list-heading">
+            <h3>Entries for this day</h3>
+            <span id="entry-count" class="count-badge">0</span>
+          </div>
+          <p id="empty-day" class="empty-state">No food logged for this day yet.</p>
+          <ul id="meal-list" class="meal-list" aria-label="Food entries for selected day"></ul>
+        </section>
+
+        <section class="panel" aria-labelledby="target-heading">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Your goals</p>
+              <h2 id="target-heading">Daily targets</h2>
+            </div>
+          </div>
+          <p class="section-intro">Targets are saved separately for each day.</p>
+          <form id="target-form" novalidate>
+            <label for="target-calories">Calorie target</label>
+            <input id="target-calories" name="calories" type="number" min="1" step="1" inputmode="numeric" required>
+
+            <label for="target-protein">Protein target (g)</label>
+            <input id="target-protein" name="proteinGrams" type="number" min="0.1" step="0.1" inputmode="decimal" required>
+
+            <button type="submit">Save targets</button>
+          </form>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <p>Your entries stay in this browser. This tracker is not medical advice.</p>
+    </footer>
+  </body>
+</html>
